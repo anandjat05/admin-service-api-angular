@@ -1,0 +1,58 @@
+<mat-card>
+  <mat-toolbar color="primary">
+    <span align="center">Admin-Service-API</span>
+    <p *ngIf="dataSaved" ngClass="success" align="right">
+      {{message}}
+    </p>
+  </mat-toolbar>
+</mat-card> 
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-8">
+          <h3><b>Create/Update Lender</b></h3>
+          <form [formGroup]="lenderApiForm" (ngSubmit)="onFormSubmit()">
+            <div class="form-group">
+              <label for="name"></label>
+              <input 
+              formControlName="name"
+                id="name"
+                type="text"
+                class="form-control" placeholder="Name">
+                <div *ngIf="lenderApiForm.get('name').touched && lenderApiForm.get('name').invalid" class="alert alert-danger">
+                  Name is Required
+                </div>
+            </div>  
+            <div formGroupName="address">
+              <div class="form-group">
+                  <label for="address" class="col-sm-3 control-label"><h3>Address</h3></label>
+                  <div class="col-sm-12">
+                      <input type="text" class="form-control" formControlName="street" placeholder="Street"><br>
+                  </div>
+                  <div class="col-sm-12">
+                    <input type="text" class="form-control" formControlName="city" placeholder="City"><br>
+                </div>
+                <div class="col-sm-12">
+                  <input type="text" class="form-control" formControlName="state" placeholder="State"><br>
+                </div>
+                <div class="col-sm-12">
+                    <input type="text" class="form-control" formControlName="zipcode" placeholder="Zip code"><br>
+                </div>
+                <div class="col-sm-12">
+                  <input type="text" class="form-control" formControlName="country" placeholder="Country"><br>
+                </div>
+                <div class="col-sm-12">
+                    <button class="btn btn-primary">Register Lender</button><br><br>
+                </div>      
+              </div>
+            </div>
+          </form>
+        
+          <pre>{{lenderApiForm.value | json }}</pre>
+      </div>
+    </div>
+</div>
+<br><br>
+<h3 style="text-align: center"><b>List of All Lenders</b></h3>
+<hr>
+

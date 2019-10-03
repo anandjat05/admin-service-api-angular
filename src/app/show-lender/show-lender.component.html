@@ -1,0 +1,29 @@
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Street</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip Code</th>
+        <th>Country</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr class="info" *ngFor="let lender of allLender">
+          <td class="column1">{{lender.name}}</td>
+          <td class="column2">{{lender.address.street}}</td>
+          <td class="column3">{{lender.address.city}}</td>
+          <td class="column4">{{lender.address.state}}</td>
+          <td class="column5">{{lender.address.zipcode}}</td>
+          <td class="column6">{{lender.address.country}}</td>
+          <td class="column7">
+              <button type="button" class="btn btn-success btn-sm" (click)="updateLender(lender)" >Update</button>&nbsp;&nbsp;
+              <button type="button" class="btn btn-danger btn-sm" (click)="deleteLender(lender)" >Delete</button>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+</div>
